@@ -62,8 +62,32 @@ h3 {
   font-weight: 400;
   line-height: 1.05;
 }
+/* Selection highlight must contrast with the text around it. Display type (Yatra One needs
+   1.48em, headings use line-height 1.05) gets a highlight box taller than its own line, so it
+   spills onto neighbouring text: light highlight for dark text, dark highlight for light text. */
 ::selection {
-  background: var(--haldi);
+  background: var(--haldi-l);
+}
+.visit ::selection,
+.board ::selection,
+.s1 ::selection,
+.ticker ::selection,
+.btn-red::selection,
+.chip.act::selection,
+.lang button.act::selection,
+.var.act::selection,
+.seg .act::selection,
+.extras figcaption::selection {
+  background: var(--ink);
+}
+/* dark text on a yellow surface: darker tint so the highlight stays visible */
+.s0 ::selection,
+.btn-haldi::selection,
+.visit .btn::selection,
+.bagbtn::selection,
+.bagbtn ::selection,
+.drawer-top button::selection {
+  background: rgba(29, 26, 22, 0.22);
 }
 :focus-visible {
   outline: 3px solid var(--neel);
@@ -205,6 +229,7 @@ h3 {
   margin-top: 2rem;
 }
 .eyebrow {
+  padding: 0 0 5% 0;
   font-family: var(--hand);
   font-size: 1.25rem;
   color: var(--neel);
@@ -234,7 +259,7 @@ h3 {
   grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 2rem;
-  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 5vw, 4rem) clamp(3.5rem, 7vw, 6rem);
+  padding: clamp(2rem, 2vw, 4rem) clamp(1rem, 5vw, 4rem) clamp(3.5rem, 7vw, 6rem);
   min-height: calc(100vh - 62px);
 }
 .hero h1 {
@@ -776,7 +801,11 @@ h3 {
   font-size: 1rem;
   opacity: 0.85;
 }
+.visit-grid > * {
+  min-width: 0;
+}
 .map {
+  width: 100%;
   background: var(--paper);
   border: 4px solid var(--ink);
   box-shadow: 10px 10px 0 var(--ink);
@@ -803,10 +832,18 @@ h3 {
   line-height: 0.85;
   white-space: nowrap;
   color: transparent;
-  -webkit-text-stroke: 2px var(--ink);
-  opacity: 0.85;
+  -webkit-text-stroke: 2px rgba(29, 26, 22, 0.85);
+}
+/* Outline-only text: default selection highlight (haldi yellow) paints straight through the
+   hollow letters, making them unreadable/invisible when copied. Fill the glyphs on selection
+   so the copied text stays legible against the highlight. */
+.foot-big::selection {
+  background: var(--ink);
+  -webkit-text-fill-color: var(--haldi-l);
+  color: var(--haldi-l);
 }
 .foot p {
+  position: relative;
   margin-top: 1.2rem;
   font-family: var(--hand);
   font-size: 1.05rem;
@@ -947,7 +984,7 @@ h3 {
 }
 .rv.in {
   opacity: 1;
-  translate: 0 0;
+  translate: none;
 }
 
 /* ───── English mode tweaks ───── */
@@ -1029,7 +1066,16 @@ html[lang="en"] .foot-big {
     grid-template-columns: 1fr;
   }
   .map {
-    min-height: 300px;
+    aspect-ratio: auto;
+    height: 320px;
+    min-height: 0;
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+  .hero h1 {
+    text-align: center;
+  }
+  .h1b {
+    margin-left: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {

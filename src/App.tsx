@@ -362,8 +362,8 @@ export default function App() {
         <section className="visit scallop" id="dukaan">
           <div className="visit-in">
             <div className="board rv" aria-hidden="true">
-              <span className="board-1">{SHOP.tagline}</span>
-              <span className="board-2">{SHOP.boardLine}</span>
+              <span className="board-1">{t(SHOP.tagline)}</span>
+              <span className="board-2">{t(SHOP.boardLine)}</span>
             </div>
 
             <div className="visit-grid">

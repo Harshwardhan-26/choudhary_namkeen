@@ -28,7 +28,7 @@ const MAPS_QUERY = encodeURIComponent(`Choudhary Namkeen, ${ADDRESS}`);
 export const SHOP = {
   nameEn: "Choudhary Namkeen",
   nameHi: "चौधरी नमकीन",
-  tagline: "मिर्ची बड़ा वाला", // from the shop's own signboard
+  tagline: { hi: "मिर्ची बड़ा वाला", en: "Mirchi Bada Wala" } as L, // from the shop's own signboard
   city: "Jodhpur",
   addressLines: ["119-120, 2nd B Road, near Gandhi Maidan", "Sardarpura, Jodhpur, Rajasthan 342003"],
   phone: "+91 94149 12798",
@@ -43,7 +43,10 @@ export const SHOP = {
   mapOpen: `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
   mapDirections: `https://www.google.com/maps/dir/?api=1&destination=${MAPS_QUERY}`,
   // Text written on the shop's own board (see main_shop photo)
-  boardLine: "विश्व विख्यात मिर्ची बड़े एवं ईमरती के निर्माता",
+  boardLine: {
+    hi: "विश्व विख्यात मिर्ची बड़े एवं ईमरती के निर्माता",
+    en: "World-famous makers of Mirchi Bada and Imarti",
+  } as L,
 };
 
 export const HERO_IMG = shopImg;
@@ -200,7 +203,7 @@ export const PRODUCTS: Product[] = [
     unit: "pack",
     desc: { hi: "व्रत स्पेशल सेहगरी मिर्ची बड़ा।", en: "Sehgari mirchi bada for fasting (vrat)." },
     // TODO: pack size and price not confirmed yet. Fill in the variants below once known.
-    variants: [{ label: "pack", price: null }],
+    variants: [{ label: "pack", price: 35 }],
     needsConfirm: true,
   },
   {
@@ -211,9 +214,9 @@ export const PRODUCTS: Product[] = [
     unit: "pack",
     desc: { hi: "फूल के आकार की पारंपरिक मिठाई।", en: "Traditional flower-shaped sweet." },
     variants: [
-      { label: "250 g", price: 250 },
-      { label: "500 g", price: 500 },
-      { label: "1 kg", price: 1000 },
+      { label: "250 g", price: 180 },
+      { label: "500 g", price: 360 },
+      { label: "1 kg", price: 720 },
     ],
   },
 ];
@@ -228,11 +231,11 @@ export const EXTRAS: { img: string; label: L; alt: string }[] = [
 
 // TODO: confirm names, roles and permission to publish these photos.
 export const FACES: { img: string; label: L; alt: string }[] = [
-  { img: badaImg, label: { hi: "बड़े चौधरी", en: "Bada Choudhary" }, alt: "Bada Choudhary at the shop" },
-  { img: yogeshImg, label: { hi: "योगेश", en: "Yogesh" }, alt: "Yogesh at the shop" },
+  { img: badaImg, label: { hi: "ज्योति साहब", en: "Jyoti Choudhary" }, alt: "Bada Choudhary at the shop" },
+  { img: yogeshImg, label: { hi: "योगेश जी", en: "Yogesh Choudhary" }, alt: "Yogesh at the shop" },
   {
     img: chefImg,
-    label: { hi: "कड़ाही पर", en: "At the kadhai" },
+    label: { hi: "उस्ताद जी", en: "Ustaad ji" },
     alt: "Cook beside the kadhai frying mirchi vada",
   },
 ];
