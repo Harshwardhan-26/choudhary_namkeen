@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node -e \"require.resolve('vite/package.json')\" 2>/dev/null || npm ci --no-audit --no-fund",
     "build": "vite build",
     "preview": "vite preview"
   },
