@@ -7,9 +7,9 @@
   --haldi-l: #f6c453;
   --neel: #2f56a6;
   --neel-d: #1f3c7a;
-  --display: "Yatra One", "Hind", serif;
+  --display: "Shrikhand", "Yatra One", serif;
   --hand: "Kalam", "Hind", cursive;
-  --body: "Hind", system-ui, sans-serif;
+  --body: "Mukta", "Hind", system-ui, sans-serif;
   --shadow: 5px 5px 0 var(--ink);
 }
 
@@ -60,7 +60,7 @@ h2,
 h3 {
   font-family: var(--display);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.15;
 }
 /* Selection highlight must contrast with the text around it. Display type (Yatra One needs
    1.48em, headings use line-height 1.05) gets a highlight box taller than its own line, so it
@@ -111,6 +111,10 @@ h3 {
   display: flex;
   align-items: baseline;
   gap: 0.6rem;
+  transition: transform 0.2s;
+}
+.brand:hover {
+  transform: translateY(-2px);
 }
 .brand-hi {
   font-family: var(--display);
@@ -122,6 +126,10 @@ h3 {
   font-size: 1.05rem;
   color: var(--neel);
   transform: rotate(-3deg);
+  transition: transform 0.25s;
+}
+.brand:hover .brand-en {
+  transform: rotate(0deg);
 }
 .links {
   display: flex;
@@ -178,6 +186,10 @@ h3 {
   font-family: var(--display);
   font-size: 1rem;
   line-height: 1.4;
+  transition: background 0.2s, color 0.2s;
+}
+.lang button:not(.act):hover {
+  background: var(--haldi-l);
 }
 .lang button + button {
   border-left: 2.5px solid var(--ink);
@@ -312,6 +324,10 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.arch-photo:hover img {
+  transform: scale(1.07);
 }
 .stamp {
   position: absolute;
@@ -321,6 +337,10 @@ h3 {
   bottom: 5%;
   transform: rotate(-12deg);
   filter: drop-shadow(3px 3px 0 var(--ink));
+  transition: transform 0.3s;
+}
+.stamp:hover {
+  transform: rotate(-12deg) scale(1.1);
 }
 .stamp-ring {
   transform-origin: 100px 100px;
@@ -337,6 +357,10 @@ h3 {
   border: 2px dashed var(--ink);
   padding: 0.1rem 0.8rem;
   transform: rotate(4deg);
+  transition: transform 0.25s;
+}
+.scribble:hover {
+  transform: rotate(0deg) scale(1.05);
 }
 @keyframes spin {
   to {
@@ -447,16 +471,29 @@ h3 {
   box-shadow: 5px 5px 0 var(--ink);
   padding: 7px 7px 0;
   transform: rotate(-2.5deg);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.photo:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 8px 8px 0 var(--ink);
 }
 .photo:nth-child(even) {
   transform: rotate(2.5deg);
   margin: -0.8rem 0 0 1.6rem;
+}
+.photo:nth-child(even):hover {
+  transform: rotate(0deg) translateY(-4px);
 }
 .photo img {
   display: block;
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.photo:hover img {
+  transform: scale(1.08);
 }
 .photo figcaption {
   padding: 0.15rem 0 0.35rem;
@@ -479,6 +516,10 @@ h3 {
   gap: 0.6rem 1.4rem;
   padding: 1.1rem 0;
   border-bottom: 2px solid rgba(47, 86, 166, 0.3);
+  transition: background-color 0.25s ease;
+}
+.item:hover {
+  background-color: rgba(232, 163, 23, 0.16);
 }
 .item:last-child {
   border-bottom: 0;
@@ -600,22 +641,37 @@ h3 {
   overflow: hidden;
   border: 3px solid var(--ink);
   box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.extras figure:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 0 var(--ink);
 }
 .extras img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.extras figure:hover img {
+  transform: scale(1.08);
 }
 .extras figcaption {
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 0.1rem 1rem;
+  padding: 0.2rem 1rem 0.35rem;
   font-family: var(--display);
   font-size: 1.3rem;
+  line-height: 1.3;
   background: var(--ink);
   color: var(--haldi-l);
+  transition: background 0.25s, color 0.25s;
+}
+.extras figure:hover figcaption {
+  background: var(--chilli);
+  color: var(--paper);
 }
 
 /* ───── moments ───── */
@@ -639,6 +695,7 @@ h3 {
   padding: 2.2rem 1.6rem 1.8rem;
   border: 3px solid var(--ink);
   box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .slip::before {
   /* punch hole */
@@ -666,14 +723,26 @@ h3 {
   background: var(--haldi-l);
   transform: rotate(-2deg);
 }
+.s0:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 9px 9px 0 var(--ink);
+}
 .s1 {
   background: var(--neel);
   color: var(--paper);
   transform: translateY(2.2rem) rotate(1.5deg);
 }
+.s1:hover {
+  transform: translateY(1.6rem) rotate(0deg);
+  box-shadow: 9px 9px 0 var(--ink);
+}
 .s2 {
   background: #e9b9a3;
   transform: rotate(-1deg);
+}
+.s2:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 9px 9px 0 var(--ink);
 }
 
 /* ───── faces ───── */
@@ -701,6 +770,12 @@ h3 {
   border: 3px solid var(--ink);
   box-shadow: 7px 7px 0 var(--ink);
   padding: 9px 9px 0;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.face:hover {
+  transform: translateY(-6px);
+  box-shadow: 10px 10px 0 var(--ink);
 }
 .face img {
   display: block;
@@ -708,22 +783,35 @@ h3 {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: 50% 20%;
+  transition: transform 0.4s ease;
+}
+.face:hover img {
+  transform: scale(1.08);
 }
 .face figcaption {
-  padding: 0.3rem 0 0.45rem;
+  padding: 0.3rem 0 0.6rem;
   text-align: center;
   font-family: var(--display);
   font-size: 1.5rem;
+  line-height: 1.3;
 }
 .f0 {
   rotate: -2deg;
+  transition: rotate 0.25s;
 }
 .f1 {
   rotate: 1.5deg;
   margin-top: 2rem;
+  transition: rotate 0.25s;
 }
 .f2 {
   rotate: -1deg;
+  transition: rotate 0.25s;
+}
+.f0:hover,
+.f1:hover,
+.f2:hover {
+  rotate: 0deg;
 }
 
 /* ───── visit ───── */
@@ -764,6 +852,10 @@ h3 {
   outline-offset: -14px;
   box-shadow: 9px 9px 0 var(--ink);
   transform: rotate(-1deg);
+  transition: transform 0.3s;
+}
+.board:hover {
+  transform: rotate(0deg) scale(1.02);
 }
 .board-1 {
   font-family: var(--display);
@@ -811,6 +903,11 @@ h3 {
   box-shadow: 10px 10px 0 var(--ink);
   min-height: 380px;
   aspect-ratio: 4 / 3;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.map:hover {
+  box-shadow: 13px 13px 0 var(--ink);
+  transform: translate(-2px, -2px);
 }
 .map iframe {
   display: block;
@@ -833,6 +930,11 @@ h3 {
   white-space: nowrap;
   color: transparent;
   -webkit-text-stroke: 2px rgba(29, 26, 22, 0.85);
+  transition: color 0.4s, -webkit-text-stroke 0.4s;
+}
+.foot-big:hover {
+  color: var(--chilli);
+  -webkit-text-stroke: 2px var(--ink);
 }
 /* Outline-only text: default selection highlight (haldi yellow) paints straight through the
    hollow letters, making them unreadable/invisible when copied. Fill the glyphs on selection
@@ -1090,5 +1192,28 @@ html[lang="en"] .foot-big {
     opacity: 1;
     translate: none;
     transition: none;
+  }
+  .photo,
+  .photo img,
+  .face,
+  .face img,
+  .f0,
+  .f1,
+  .f2,
+  .extras figure,
+  .extras img,
+  .extras figcaption,
+  .slip,
+  .item,
+  .arch-photo img,
+  .stamp,
+  .scribble,
+  .board,
+  .foot-big,
+  .brand,
+  .brand-en,
+  .lang button,
+  .map {
+    transition: none !important;
   }
 }
